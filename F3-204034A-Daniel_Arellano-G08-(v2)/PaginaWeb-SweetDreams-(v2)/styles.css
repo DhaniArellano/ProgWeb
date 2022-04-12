@@ -1,0 +1,191 @@
+body {
+  /*color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+    background-color: #1E1B18;
+    font-size: 1em;*/
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 12px;
+  background-color: #fff;
+  border: 1px solid #1b7895;
+}
+.navbar ul li {
+  background-color: #1b7895;
+  border: 1px solid #1b7895;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 10px 20px;
+  text-align: center;
+  user-select: none;
+  margin: 10px;
+}
+.navbar ul li:hover {
+  border-radius: 4px;
+  border: 1px solid #042731;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1 {
+  margin: 0;
+}
+
+.container > * {
+  /*padding: 20px;*/
+  border: 0px solid;
+  font-family: 'Anek Bangla', sans-serif;
+}
+
+.header {
+  grid-area: header;
+  background-color: #f7f7f7;
+  text-align: center;
+  /*border-top: 10px groove #1b7895;*/
+  border-bottom: 10px ridge #1b7895;
+}
+
+.header p {
+  font-family: "Hurricane", cursive;
+  font-family: "Beau Rivage", cursive;
+  font-size: 40px;
+}
+.header img {
+  width: 300px;
+}
+.aside img {
+  padding: 5px;
+  width: 300px;
+}
+.content img {
+  padding: 5px;
+  width:304px;
+  height:228px;
+}
+
+.content {
+  grid-area: content;
+  background-color: #f7f7f7;  
+}
+
+.navbar {
+  grid-area: navbar;
+  background-color: #f7f7f7;
+  padding: 20px;
+  text-align: center;
+}
+
+.navbar p {
+  font-size: 28px;
+}
+.aside {
+  grid-area: sidebar;
+  background-color: #f7f7f7;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: #1b7895;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  width: 100%;
+}
+.footer .common {
+  width: 15%;
+}
+.footer .info {
+  width: 85%;
+}
+
+.container {
+  display: grid;
+  grid-gap: 0px;
+  min-height: 100vh;
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas:
+    "header"
+    "navbar"
+    "content"
+    "sidebar"
+    "footer";
+}
+
+@media (min-width: 500px) {
+  .container {
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
+      "header  header"
+      "navbar     navbar"
+      "sidebar content"
+      "footer      footer";
+  }
+  nav ul {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 700px) {
+  .container {
+    grid-template-rows: auto 1fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-areas:
+      "header header  header"
+      "navbar    content sidebar"
+      "navbar    content sidebar"
+      "footer footer  footer";
+  }
+  nav ul {
+    flex-direction: column;
+  }
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+  background: #3b5998;
+  color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+  background: #55acee;
+  color: white;
+}
+
+.fa-youtube {
+  background: #ca0e0e;
+  color: white;
+}
+
+.fa-instagram {
+  background: #E4405F;
+  color: white;
+}
