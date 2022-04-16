@@ -67,7 +67,7 @@ h1 {
 }
 .aside img {
   padding: 5px;
-  width: 300px;
+  width: 204px;
 }
 .content img {
   padding: 5px;
@@ -78,8 +78,16 @@ h1 {
 .content {
   grid-area: content;
   background-color: #f7f7f7;  
+  padding: 20px;
 }
-
+.content iframe{
+  display: block;
+  margin: 0 auto;
+}
+.content h1 {
+  font-size: 20px;
+  text-align: center;
+}
 .navbar {
   grid-area: navbar;
   background-color: #f7f7f7;
@@ -87,17 +95,25 @@ h1 {
   text-align: center;
 }
 
-.navbar p {
-  font-size: 28px;
+.navbar h2 {
+  font-size: 20px;
+  text-align: center;
 }
 .aside {
   grid-area: sidebar;
   background-color: #f7f7f7;
+  padding: 20px;
+}
+.aside h2 {
+  font-size: 20px;
+  text-align: center;
 }
 
 .footer {
   grid-area: footer;
   background-color: #1b7895;
+  border-top: 10px groove #1b7895;
+  color: #fff;
   padding: 20px;
   text-align: center;
   display: flex;
@@ -107,7 +123,11 @@ h1 {
   width: 15%;
 }
 .footer .info {
-  width: 85%;
+  width: 30%;
+  justify-content: space-between;
+}
+.footer .links {
+  width: 55%;
 }
 
 .container {
@@ -159,6 +179,7 @@ h1 {
   width: 30px;
   text-align: center;
   text-decoration: none;
+  margin: 5px 2px;
 }
 
 /* Add a hover effect if you want */

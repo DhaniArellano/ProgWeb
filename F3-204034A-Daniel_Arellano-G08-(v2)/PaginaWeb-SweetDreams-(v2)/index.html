@@ -17,6 +17,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@200&family=Beau+Rivage&family=Hurricane&display=swap" rel="stylesheet">
+    <script languague="javascript">
+      function mostrar(a) {
+        cerrar();
+        if(a==1){
+          document.getElementById("mapaSan").style.display="";
+        }
+        if(a==2){
+          document.getElementById("mapaCarta").style.display="";
+        }
+        if(a==3){
+          document.getElementById("mapaMed").style.display="";
+        }
+        if(a==4){
+          document.getElementById("mapaTun").style.display="";
+        }
+        if(a==5){
+          document.getElementById("mapaCal").style.display="";
+        }
+      }
+      
+      function cerrar() {
+        document.getElementById("mapaCarta").style.display="none";
+        document.getElementById("mapaSan").style.display="none";
+        document.getElementById("mapaMed").style.display="none";
+        document.getElementById("mapaTun").style.display="none";
+        document.getElementById("mapaCal").style.display="none";
+      }
+</script>
   </head>
   <body>
     <div class="container">
@@ -29,17 +57,38 @@
         <p>"Los mejores sueños están en el hotel Sweet Dreams."</p>
       </header>
       <nav class="navbar">
-        <p>Sucursales</p>
+        <h2>Sucursales</h2>
         <ul>
-          <li><a href="#">San Andres</a></li>
-          <li><a href="#">Cartagena</a></li>
-          <li><a href="#">Medellin</a></li>
-          <li><a href="#">Tunja</a></li>
-          <li><a href="#">Cali</a></li>
+          <li><a href="javascript:mostrar(1);">San Andres</a></li>
+          <li><a href="javascript:mostrar(2);">Cartagena</a></li>
+          <li><a href="javascript:mostrar(3);">Medellin</a></li>
+          <li><a href="javascript:mostrar(4);">Tunja</a></li>
+          <li><a href="javascript:mostrar(5);">Cali</a></li>
         </ul>
       </nav>
       <article class="content">
         <h1>Sweet Dreams Hotel</h1>
+        <div id="mapaSan" class="mapa" style="display:none">
+          <p>Sucursal San Andres</p>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3894.0297135899505!2d-81.69258018586854!3d12.580292426749018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f05affd6e7e6bcf%3A0x96fb8d35e8e4c3d1!2sSAN%20ANDRES%20Y%20PROIVENCIA!5e0!3m2!1ses-419!2sco!4v1650085809532!5m2!1ses-419!2sco" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div id="mapaCarta" class="mapa" style="display:none">
+          <p>Sucursal San Cartagena</p>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31395.548253963145!2d-75.5098163363043!3d10.386303665399472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef625e7ae9d1351%3A0xb161392e033f26ca!2sCartagena%20de%20Indias%2C%20Provincia%20de%20Cartagena%2C%20Bol%C3%ADvar!5e0!3m2!1ses-419!2sco!4v1650083157754!5m2!1ses-419!2sco" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div id="mapaMed" class="mapa" style="display:none">
+          <p>Sucursal Medellin</p>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126916.69937746835!2d-75.65125278940764!3d6.244369472502508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428dfb80fad05%3A0x42137cfcc7b53b56!2sMedell%C3%ADn%2C%20Antioquia!5e0!3m2!1ses-419!2sco!4v1650085591283!5m2!1ses-419!2sco" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div id="mapaTun" class="mapa" style="display:none">
+          <p>Sucursal Tunja</p>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63538.979655112846!2d-73.39126078111255!3d5.539378403715653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6a7c2e897fba5b%3A0xac9fda7e6b9aa68c!2zVHVuamEsIEJveWFjw6E!5e0!3m2!1ses-419!2sco!4v1650085646154!5m2!1ses-419!2sco" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div id="mapaCal" class="mapa" style="display:none">
+          <p>Sucursal Cali</p>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127449.04676341954!2d-76.5850726651887!3d3.4031082002240765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a6f0cc4bb3f1%3A0x1f0fb5e952ae6168!2sCali%2C%20Valle%20del%20Cauca!5e0!3m2!1ses-419!2sco!4v1650085699140!5m2!1ses-419!2sco" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
         <p>Nuestro hotel ofrece una amplia gama de servicios y habitaciones para todos los gustos. Disfrute de unas vacaciones inolvidables en nuestro hotel y descubra todo lo que tenemos para ofrecerle.</p>
         <iframe src="https://player.vimeo.com/video/201243950?autoplay=1&loop=1&autopause=0&background=1&muted=1" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
         <h2>Servicios</h2>
@@ -100,9 +149,14 @@
 
       </article>
       <aside class="aside">
+        <h2>Datos del Desarollador</h2>
         <img
-          src="Imagenes/undraw_Profile_details_re_ch9r.png"
-          alt="foto del programador"
+          src="Imagenes/undraw_Profile_details_re_ch9r.png" style="display:none"
+          alt="vector de datos personales"
+        />
+        <img
+          src="Imagenes/tse.png"
+          alt="Foto Desarrollador"
         />
         <p>Datos personales</p>
         <p>Nombre: Daniel Arellano</p>
@@ -121,17 +175,25 @@
         </p>
       </aside>
       <footer class="footer">
+        <div class="info">
+          <a href="#" class="fa fa-facebook"></a>
+          <a href="#" class="fa fa-instagram"></a>
+          <a href="#" class="fa fa-youtube"></a>
+          </a>
+          <p><img src="Imagenes/undraw_Social_ideas_re_j5v4.png" alt="Social" style="width:204px;"></p>
+        </div>
         <div class="common">
           <h3>sweetdreams</h3>
           <p>Dirección: Carrera 7 # 12-45</p>
           <p>Teléfonos: +57 (1) 123 4567</p>
           <p>Email: info@sweetdreams.com</p>
         </div>
-        <div class="info">
-          <a href="#" class="fa fa-facebook"></a>
-          <a href="#" class="fa fa-instagram"></a>
-          <a href="#" class="fa fa-youtube"></a>
-          </a>
+        <div class="links">
+          <h3>enlaces de interes</h3>
+          <p>Trabaje con nosotros</p>
+          <p>Políticas de tratamiento de datos</p>
+          <p>Permisos de prestación de servicio</p>
+          <p>Politicas de no se que poner</p>
         </div>
       </footer>
     </div>
