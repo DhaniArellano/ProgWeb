@@ -5,6 +5,18 @@ body {
     background-color: #1E1B18;
     font-size: 1em;*/
 }
+body h1 {
+  font-size: 20px;
+  text-align: center;
+}
+body h2 {
+  font-size: 20px;
+  text-align: center;
+}
+body h3 {
+  font-size: 18px;
+  text-align: left;
+}
 
 .navbar ul {
   list-style-type: none;
@@ -61,6 +73,7 @@ h1 {
   font-family: "Hurricane", cursive;
   font-family: "Beau Rivage", cursive;
   font-size: 40px;
+  padding: 8px 8px;
 }
 .header img {
   width: 300px;
@@ -84,10 +97,6 @@ h1 {
   display: block;
   margin: 0 auto;
 }
-.content h1 {
-  font-size: 20px;
-  text-align: center;
-}
 .navbar {
   grid-area: navbar;
   background-color: #f7f7f7;
@@ -95,18 +104,10 @@ h1 {
   text-align: center;
 }
 
-.navbar h2 {
-  font-size: 20px;
-  text-align: center;
-}
 .aside {
   grid-area: sidebar;
   background-color: #f7f7f7;
   padding: 20px;
-}
-.aside h2 {
-  font-size: 20px;
-  text-align: center;
 }
 
 .footer {
@@ -124,7 +125,6 @@ h1 {
 }
 .footer .info {
   width: 30%;
-  justify-content: space-between;
 }
 .footer .links {
   width: 55%;
