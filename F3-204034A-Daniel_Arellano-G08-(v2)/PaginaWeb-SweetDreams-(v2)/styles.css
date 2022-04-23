@@ -210,3 +210,25 @@ h1 {
   background: #E4405F;
   color: white;
 }
+
+fieldset {
+  background-color: #eeeeee;
+  float: left;
+  width: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+legend {
+  background-color: gray;
+  color: white;
+  padding: 5px 10px;
+}
+
+input  {
+  margin: 5px;
+}
+input .inline-input  {
+  margin: 5px;
+  display: inline;
+}
