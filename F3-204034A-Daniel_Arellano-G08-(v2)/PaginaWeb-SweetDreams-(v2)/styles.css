@@ -97,6 +97,7 @@ h1 {
   display: block;
   margin: 0 auto;
 }
+
 .navbar {
   grid-area: navbar;
   background-color: #f7f7f7;
@@ -210,18 +211,23 @@ h1 {
   background: #E4405F;
   color: white;
 }
+form {
+  display: flex;
+  flex-direction: column;
+}
 
 fieldset {
   background-color: #eeeeee;
-  float: left;
+  /*float: left;
   width: 50%;
   display: inline-block;
   box-sizing: border-box;
+  */
 }
 
 legend {
-  background-color: gray;
-  color: white;
+  background-color: #1b7895;
+  color: #fff;
   padding: 5px 10px;
 }
 
