@@ -14,6 +14,7 @@ if (isset($_POST['calc_quotation'])) {
     $_salon = $_POST['salon'] ?? "";
 
     $services = 0;
+    $datenow = date('d-m-Y');
     $date1 = date_create($_startDate);
     $date2 = date_create($_endDate);
     $diff = date_diff($date1, $date2);
@@ -27,6 +28,7 @@ if (isset($_POST['calc_quotation'])) {
 
     $discount_services = 0;
     $discount_time = 0;
+    $discount_days = 0;
     $discount_seniority = 0;
     $applies_seniority = "no";
 
@@ -42,91 +44,89 @@ if (isset($_POST['calc_quotation'])) {
     $suite_requested = "no";
     $salon_requested = "no";
 
-    echo $diff->format('Difference between two dates: %R%a days');
-
-    if (isset($_single) && !empty($_single)) {
-        $services = $services+1;
-        $single_cost = $days * 50000;
-        $single_requested = "si";
-    }
-    if (isset($_double) && !empty($_double)) {
-        $services = $services+1;
-        $double_cost = $days * 75000;
-        $double_requested = "si";
-    }
-    if (isset($_triple) && !empty($_triple)) {
-        $services = $services+1;
-        $triple_cost = $days * 100000;
-        $triple_requested = "si";
-    }
-    if (isset($_suite) && !empty($_suite)) {
-        $services = $services+1;
-        $suite_cost = $days * 300000;
-        $suite_requested = "si";
-    }
-    if (isset($_salon) && !empty($_salon)) {
-        $services = $services+1;
-        $salon_cost = $days * 3000000;
-        $salon_requested = "si";
-    }
-
-    //Daily discount
-    if($days == 1){
-        $discount_days = 0;
-    }
-    //Weekly discount
-    if($days >= 7 && $days <30){
-        $discount_days = 0.05;
-    }
-    //Monthly discount
-    if($days >= 30 && $days <60){
-        $discount_days = 0.10;
-    }
-    //BiMonthly discount
-    if($days >=60 && $days <180){
-        $discount_days = 0.15;
-    }
-    //SemiAnnual discount
-    if($days >=180 && $days <365){
-        $discount_days = 0.20;
-    }
-    //Annual discount
-    if($days == 365 ){
-        $discount_days = 0.30;
-    }
-    //Discount per number of services
-    if($services == 1){
-        $discount_services = 0;
-    }
-    if($services == 2){
-        $discount_services = 0.06;
-    }
-    if($services == 3){
-        $discount_services = 0.12;
-    }
-    if($services == 4){
-        $discount_services = 0.18;
-    }
-    if($services >= 5){
-        $discount_services = 0.20;
-    }
-    //Discount per Customer Seniority
-    if($_customerAge == "new"){
-        $discount_seniority = 0;
-    }
-    if($_customerAge == "old"){
-        $discount_seniority = 0.17;
-        $applies_seniority = "si";
-    }
-    $total_discounts = $discount_days + $discount_services + $discount_seniority;
-    $sum_cost = $single_cost + $double_cost + $triple_cost + $suite_cost + $salon_cost;
-    $total_tax = ($sum_cost * $iva) + $sum_cost;
-    $total = $total_tax - ($total_tax * $total_discounts) ;
-
+    $msg_form = "";
+    
     if ((empty($_single)) && (empty($_double)) && (empty($_triple)) && (empty($_suite)) && (empty($_salon))) {
-        echo 'No seleccionó algun servicio';
+    } else {
+        if (isset($_single) && !empty($_single)) {
+            $services = $services+1;
+            $single_cost = $days * 50000;
+            $single_requested = "si";
+        }
+        if (isset($_double) && !empty($_double)) {
+            $services = $services+1;
+            $double_cost = $days * 75000;
+            $double_requested = "si";
+        }
+        if (isset($_triple) && !empty($_triple)) {
+            $services = $services+1;
+            $triple_cost = $days * 100000;
+            $triple_requested = "si";
+        }
+        if (isset($_suite) && !empty($_suite)) {
+            $services = $services+1;
+            $suite_cost = $days * 300000;
+            $suite_requested = "si";
+        }
+        if (isset($_salon) && !empty($_salon)) {
+            $services = $services+1;
+            $salon_cost = $days * 3000000;
+            $salon_requested = "si";
+        }
+    
+        //Daily discount
+        if($days == 1){
+            $discount_days = 0;
+        }
+        //Weekly discount
+        if($days >= 7 && $days <30){
+            $discount_days = 0.05;
+        }
+        //Monthly discount
+        if($days >= 30 && $days <60){
+            $discount_days = 0.10;
+        }
+        //BiMonthly discount
+        if($days >=60 && $days <180){
+            $discount_days = 0.15;
+        }
+        //SemiAnnual discount
+        if($days >=180 && $days <365){
+            $discount_days = 0.20;
+        }
+        //Annual discount
+        if($days == 365 ){
+            $discount_days = 0.30;
+        }
+        //Discount per number of services
+        if($services == 1){
+            $discount_services = 0;
+        }
+        if($services == 2){
+            $discount_services = 0.06;
+        }
+        if($services == 3){
+            $discount_services = 0.12;
+        }
+        if($services == 4){
+            $discount_services = 0.18;
+        }
+        if($services >= 5){
+            $discount_services = 0.20;
+        }
+        //Discount per Customer Seniority
+        if($_customerAge == "new"){
+            $discount_seniority = 0;
+        }
+        if($_customerAge == "old"){
+            $discount_seniority = 0.17;
+            $applies_seniority = "si";
+        }
+        $total_discounts = $discount_days + $discount_services + $discount_seniority;
+        $sum_cost = $single_cost + $double_cost + $triple_cost + $suite_cost + $salon_cost;
+        $total_tax = ($sum_cost * $iva) + $sum_cost;
+        $total = $total_tax - ($total_tax * $total_discounts) ;
     }
-
 }
 ?>
 <!DOCTYPE html>
@@ -217,5 +217,4 @@ if (isset($_POST['calc_quotation'])) {
     <?php include("footer.php"); ?>
   </div>
 </body>
-
 </html>

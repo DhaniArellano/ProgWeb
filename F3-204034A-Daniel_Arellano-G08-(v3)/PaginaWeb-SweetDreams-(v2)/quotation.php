@@ -34,14 +34,15 @@
         </fieldset>
         <fieldset>
             <legend>Fecha Reservacion</legend>
-            <input type="date" id="startDate" name="startDate" value="">
+            <input type="date" id="startDate" name="startDate" value="" required>
             <label for="startDate">Fecha Inicio</label><br>
-            <input type="date" id="endDate" name="endDate" value="">
+            <input type="date" id="endDate" name="endDate" value="" required>
             <label for="endDate">Fecha Salida</label><br>
 
         </fieldset>
         <input type="submit" name="calc_quotation" value="Cotizar">
     </form>
+    <p><?php $msg_form ?></p>
     </article>
     <?php include("aside.php"); ?>
     <?php include("footer.php"); ?>
