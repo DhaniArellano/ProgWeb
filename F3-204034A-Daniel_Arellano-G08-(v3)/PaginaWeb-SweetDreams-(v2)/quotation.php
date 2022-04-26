@@ -9,8 +9,7 @@
     <h2>Cotizacion SweetDreams</h2>
     <form action="generate.php" method="POST" role="form" enctype="multipart/form-data">
         <fieldset>
-            <legend name="#fs">Información Cliente</legend>
-            
+            <legend>Información Cliente</legend>
             <label for="fname">Nombre: <input type="text" id="fname" name="fname" placeholder="Pepito"></label>
             <label for="lname">Apellido: <input type="text" id="lname" name="lname" placeholder="Perez"></label><br>
             <input type="radio" id="newCustomer" name="customerAge" checked="checked" value="new">
@@ -34,11 +33,10 @@
         </fieldset>
         <fieldset>
             <legend>Fecha Reservacion</legend>
-            <input type="date" id="startDate" name="startDate" value="" required>
+            <input type="date" id="startDate" name="startDate" value="<?php echo date('Y-m-d') ?>" required>
             <label for="startDate">Fecha Inicio</label><br>
             <input type="date" id="endDate" name="endDate" value="" required>
             <label for="endDate">Fecha Salida</label><br>
-
         </fieldset>
         <input type="submit" name="calc_quotation" value="Cotizar">
     </form>

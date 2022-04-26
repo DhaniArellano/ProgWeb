@@ -73,7 +73,16 @@ h1 {
   font-family: "Hurricane", cursive;
   font-family: "Beau Rivage", cursive;
   font-size: 40px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.header .slogan{
   padding: 8px 8px;
+  width: 100%;
+  line-height: 40px;
+  font-size: 0.7em;
+  text-align: center;
+  bottom:0;
 }
 .header img {
   width: 300px;

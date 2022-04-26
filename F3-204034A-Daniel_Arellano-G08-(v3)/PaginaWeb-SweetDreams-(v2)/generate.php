@@ -48,6 +48,13 @@ if (isset($_POST['calc_quotation'])) {
     
     if ((empty($_single)) && (empty($_double)) && (empty($_triple)) && (empty($_suite)) && (empty($_salon))) {
     } else {
+        if ($date1 >= $date2) {
+            $msg_form = "Fecha invalida, por favor rectifique la informacion ingresada";
+            echo("la fecha inicial no puede ser menor o igual que la fecha final");
+        } else {
+            # code...
+        }
+        
         if (isset($_single) && !empty($_single)) {
             $services = $services+1;
             $single_cost = $days * 50000;
@@ -138,6 +145,7 @@ if (isset($_POST['calc_quotation'])) {
     <?php include("navbar.php"); ?>
     <article class="content">
     <h2>Cotizacion SweetDreams</h2>
+    <p><?php echo $msg_form ?></p>
     <table>
         <tr>
             <th>Servicio</th>
