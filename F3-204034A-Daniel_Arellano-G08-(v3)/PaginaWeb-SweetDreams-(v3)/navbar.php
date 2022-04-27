@@ -7,6 +7,6 @@
         <li><a href="javascript:mostrar(3);">Medellin</a></li>
         <li><a href="javascript:mostrar(4);">Tunja</a></li>
         <li><a href="javascript:mostrar(5);">Cali</a></li>
-        <li><a href="quotation.php#fname">Cotizador</a></li>  
+        <li><a href="quotation.php#quotation">Cotizador</a></li>  
     </ul>
 </nav>

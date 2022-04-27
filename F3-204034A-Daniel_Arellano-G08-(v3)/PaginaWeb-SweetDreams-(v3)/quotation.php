@@ -6,8 +6,8 @@
     <?php include("header.php"); ?>
     <?php include("navbar.php"); ?>
     <article class="content">
-    <h2>Cotizacion SweetDreams</h2>
-    <form action="generate.php" method="POST" role="form" enctype="multipart/form-data">
+    <h2 id="quotation">Cotizacion SweetDreams</h2>
+    <form action="generate.php#gen" method="POST" role="form" enctype="multipart/form-data">
         <fieldset>
             <legend>Información Cliente</legend>
             <label for="fname">Nombre: <input type="text" id="fname" name="fname" placeholder="Pepito"></label>
