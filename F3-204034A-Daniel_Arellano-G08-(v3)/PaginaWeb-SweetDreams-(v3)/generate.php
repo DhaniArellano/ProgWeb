@@ -1,61 +1,98 @@
 <?php
-
+//validate that the data received from the form are not empty or void
 if (isset($_POST['calc_quotation'])) {
+    //variable initialization
+    
+    /*
+    fname => variable for the first name of the customer
+    lname => variable for the first name of the customer
+    customerAge => variable for know if a customer is new or not
+    startDate => this variable stores the start date of the input date
+    endDate => this variable stores the start date of the input date
+    */
     $_fname = $_POST['fname'];
     $_lname = $_POST['lname'];
     $_customerAge = $_POST['customerAge'];
     $_startDate = $_POST['startDate'];
     $_endDate = $_POST['endDate'];
 
+    /*
+    single => this variable stores if you have single room service
+    double => this variable stores if you have double room service
+    triple => this variable stores if you have triple room service
+    suite => this variable stores if you have suite room service
+    salon => this variable stores if you have event service
+    */
     $_single = $_POST['single'] ?? "";
     $_double = $_POST['double'] ?? "";
     $_triple = $_POST['triple'] ?? "";
     $_suite = $_POST['suite'] ?? "";
     $_salon = $_POST['salon'] ?? "";
-
     $services = 0;
+
+    /*
+    these variables are used to know the difference between de start and end date
+    */
     $datenow = date('d-m-Y');
     $date1 = date_create($_startDate);
     $date2 = date_create($_endDate);
     $diff = date_diff($date1, $date2);
     $days = $diff->format("%a");
-
-    $single_cost = 0;
-    $double_cost = 0;
-    $triple_cost = 0;
-    $suite_cost = 0; 
-    $salon_cost = 0;
-
+    
+    
+    /*
+    these variables are used to know how much discount a customer can have and to which ones they can apply
+    */
     $discount_services = 0;
     $discount_time = 0;
     $discount_days = 0;
     $discount_seniority = 0;
     $applies_seniority = "no";
-
+    
+    /*
+    these variables is used to know how much a customer has to pay.
+    */
+    //setlocale setup the currency
     setlocale(LC_MONETARY,"es_CO");
+    $single_cost = 0;
+    $double_cost = 0;
+    $triple_cost = 0;
+    $suite_cost = 0; 
+    $salon_cost = 0;
     $sum_cost = 0;
     $total_discounts = 0;
     $iva = 0.19;
     $total = 0;
     $total_tax = 0;
-
+    
+    /*
+    these variables establish whether or not a service has been contracted.
+    and are used to show the status on the ui
+    */
     $single_requested = "no";
     $double_requested = "no";
     $triple_requested = "no";
     $suite_requested = "no";
     $salon_requested = "no";
 
+    /*
+    msg_form => this variable stores an error message which is displayed in the ui
+    */
     $msg_form = "";
     
+    //validate if a costumer has selected at least one service
     if ((empty($_single)) && (empty($_double)) && (empty($_triple)) && (empty($_suite)) && (empty($_salon))) {
         $msg_form = "Por favor seleccione al menos un servicio";
     } else {
+        //validate the dates received from the form
         if ($date1 >= $date2) {
             $msg_form = "la fecha inicial no puede ser menor o igual que la fecha final";
         } else {
+            //validates that a customer selects a correct time interval, no longer than one day and less than one year
             if($days <= 1 || $days > 365){
                 $msg_form = "El tiempo no puede ser mayor a 365 días";    
             }else {
+                //validation for the type of service chosen by a customer
                 if (isset($_single) && !empty($_single)) {
                     $services = $services+1;
                     $single_cost = $days * 50000;
@@ -81,6 +118,9 @@ if (isset($_POST['calc_quotation'])) {
                     $salon_cost = $days * 3000000;
                     $salon_requested = "si";
                 }
+                /*
+                in this part the program validates and calculates the discount for time
+                */
                 //Daily discount
                 if($days == 1){
                     $discount_days = 0;
@@ -105,33 +145,48 @@ if (isset($_POST['calc_quotation'])) {
                 if($days == 365 ){
                     $discount_days = 0.30;
                 }
-                //Discount per number of services
+                /*
+                in this part the program validates and calculates the discount for number of services
+                */
+                //Discount per number one service
                 if($services == 1){
                     $discount_services = 0;
                 }
+                //Discount per number two services
                 if($services == 2){
                     $discount_services = 0.06;
                 }
+                //Discount per number three services
                 if($services == 3){
                     $discount_services = 0.12;
                 }
+                //Discount per number four services
                 if($services == 4){
                     $discount_services = 0.18;
                 }
+                //Discount per number five services
                 if($services >= 5){
                     $discount_services = 0.20;
                 }
-                //Discount per Customer Seniority
+                /*
+                in this part the program validates and calculates the discount for seniority
+                */
+                //There arent discounts for new costumers
                 if($_customerAge == "new"){
                     $discount_seniority = 0;
                 }
+                //Discount per Customer Seniority
                 if($_customerAge == "old"){
                     $discount_seniority = 0.17;
                     $applies_seniority = "si";
                 }
+                //calculates the total sum of discounts
                 $total_discounts = $discount_days + $discount_services + $discount_seniority;
+                //calculates the total sum of services
                 $sum_cost = $single_cost + $double_cost + $triple_cost + $suite_cost + $salon_cost;
+                //calculates total taxable services 
                 $total_tax = ($sum_cost * $iva) + $sum_cost;
+                //calculates the total value to be paid by the customer
                 $total = $total_tax - ($total_tax * $total_discounts) ;
             }
         
